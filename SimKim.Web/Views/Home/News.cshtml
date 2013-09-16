@@ -1,0 +1,55 @@
+﻿@{
+    ViewBag.Title = "News";
+}
+<div id="news-wrapper" class="info-pages">
+    <hgroup class="title">
+        <h1>@ViewBag.Title</h1>
+    </hgroup>
+    <article id="news-output"></article>
+</div>
+
+@section NewsJS {
+    <script type="text/javascript">
+        $("#news-output").append('<h2>Loading...</h2>');
+        
+        $.ajax({
+            type: "GET",
+            url: "http://datapal.apphb.com/api/simkimwebapi",//url: "http://localhost:15146/api/simkimwebapi",
+            async: true,
+            content: 'application/json'})
+            .done(function (feed) {
+                if (feed.length == 0) {
+                    $("#news-output").html('<h2>No News.</h2>');
+                } else {
+                    document.getElementById("news-output").innerHTML = "";
+                }
+
+                var hrTag;
+                for (var i = 0; i < feed.length; i++) {
+                    if (i == feed.length - 1) {
+                        hrTag = '';
+                    } else {
+                        hrTag = "<hr noshade='noshade' size='1px' color='#d8d8d8'/>";
+                    }
+                    
+                    DisplayFeed(feed[i].title, dateFormat(feed[i].creationDate, "fullDate", true), feed[i].text, hrTag);
+                }
+            })
+            .fail(function (xhr) {
+                console.log("Error occurred: ", xhr.statusText);
+                $("#news-output").html('<h2>No Service.</h2>');
+            });
+        
+        function DisplayFeed(label, date, value, hr) {
+            var start = "<section class='news'><h3>";
+            var dateStart = "</h3><span class='news-posted-date'>";
+            var dateEnd = "</span><p>";
+            var end = "</p></section>";
+            $("#news-output")
+                .append(start + label + dateStart + date + dateEnd + value + end + "<br />" + "<br />" + hr);
+        };
+
+    </script>
+}
+ 
+

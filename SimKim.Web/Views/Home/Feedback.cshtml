@@ -1,0 +1,64 @@
+﻿@model SimKim.Web.Models.SiteFeedback
+
+@{
+    ViewBag.Title = "Feedback";
+}
+<div id="feedback-wrapper" class="feedback">
+     <hgroup class="title">
+            <h1>@ViewBag.Title</h1>
+        </hgroup>
+    <img width="210px" height="210px" src="~/Images/feedback-img.png" id="feedback-img"/>
+    <div id="feedback-form-wrapper">
+        @using (Html.BeginForm()) {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+
+            <fieldset>
+                <legend>Site Feedback</legend>
+
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.Name)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.Name)
+                    @Html.ValidationMessageFor(model => model.Name)
+                </div>
+
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.Phone)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.Phone)
+                    @Html.ValidationMessageFor(model => model.Phone)
+                </div>
+
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.Email)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.Email)
+                    @Html.ValidationMessageFor(model => model.Email)
+                </div>
+
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.Feedback)
+                </div>
+                <div class="editor-field">
+                    @Html.TextAreaFor(model => model.Feedback)
+                    @Html.ValidationMessageFor(model => model.Feedback)
+                </div>
+
+                <p>
+                    <input type="submit" value="Create" />
+                </p>
+            </fieldset>
+        }
+
+        <div>
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

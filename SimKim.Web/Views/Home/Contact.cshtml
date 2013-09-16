@@ -1,0 +1,62 @@
+﻿@{
+    ViewBag.Title = "Contact";
+}
+
+<div id="contact-wrapper" class="info-pages">
+    <div id="contact-info-wrapper">
+        <hgroup class="title">
+            <h1>@ViewBag.Title</h1>
+        </hgroup>
+
+        <section class="contact">
+            <header>
+                <h3>Phone</h3>
+            </header>
+            <p>
+                <span class="label">Main:</span>
+                <span>1-800-SimKim</span>
+            </p>
+            <p>
+                <span class="label">After Hours:</span>
+                <span>1-800-SimKimAfter</span>
+            </p>
+        </section>
+
+        <section class="contact">
+            <header>
+                <h3>Email</h3>
+            </header>
+            <p>
+                <span class="label">Support:</span>
+                <span><a href="mailto:Support@simkim.com">Support@simkim.com</a></span>
+            </p>
+            <p>
+                <span class="label">Marketing:</span>
+                <span><a href="mailto:Marketing@simkim.com">Marketing@simkim.com</a></span>
+            </p>
+            <p>
+                <span class="label">General:</span>
+                <span><a href="mailto:General@simkim.com">General@simkim.com</a></span>
+            </p>
+        </section>
+
+        <section class="contact">
+            <header>
+                <h3>Address</h3>
+            </header>
+            <p>
+                Nowhere<br />
+                The Best Place Ever, 7
+            </p>
+        </section>
+    </div>
+    <section class="contact">
+        <h3 id="mapofnowhere-title">Map</h3>
+        <a href="~/Images/map-big.jpg"><img id="mapofnowhere" src="~/Images/map-small.jpg" height="221" width="384" alt="SimKim Address Map"/></a>
+    </section>
+</div>
+
+<script type="text/javascript">
+    var currentArticle = document.getElementById('contact');
+    currentArticle.classList.add('active');
+</script>

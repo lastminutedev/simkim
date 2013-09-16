@@ -1,0 +1,91 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+    <title>SimKim</title>
+    <link href="~/Images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+	@Styles.Render("~/Content/css")
+	@Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+	<header>
+		<nav id="header-nav">
+			<ul>
+				<li><a href="~/Home" id="home" title="Home">Home</a>
+				</li><li><a href="~/Home/Contact" id="contact" title="Contact">Contact</a>
+				</li>
+			</ul>
+		</nav>		
+	</header>	
+	<div id="main-wrapper">	
+		<div id="logo-border-wrapper">	
+			<div id="logo-wrapper">
+				<h1><a href="~/Home" title="Home Page"><img id="logo-image" src="~/Images/Logo.png" alt="SimKim Logo" height="26" width="126"></a></h1>
+				<nav id="main-top-nav">
+					<ul>
+						<li><a href="#"><span>More</span></a>
+							<ul>
+								<li><a href="~/Home/News"><span>News</span></a>
+								</li>
+								<li><a href="~/Home/Features"><span>Features</span></a></li>
+							</ul>
+						</li><li><a href="#"><span>Info</span></a>
+							<ul>
+								<li><a href="~/Home/Contact"><span>Contact</span></a>
+								</li><li><a href="~/Home/About"><span>About</span></a></li>
+							</ul>
+						</li>
+					</ul> 					
+				</nav>			
+			</div>				
+		</div>
+        <div class=".clearfix" id="wrapper-body">
+            @RenderBody()
+        </div>
+		<div id="main-bottom-nav-background-wrapper">
+			<nav id="main-bottom-nav">
+				<ul>
+					<li><a href="~/Home" title="Home">Home</a>
+					</li><li><a href="~/Home/Help" title="Help">Help</a>
+					</li>
+				</ul>
+			</nav>	
+		</div>
+	</div>
+	<footer>
+		<div id="footer-second-top-border"></div>
+		<div id="footer">
+			<nav id="footer-nav">
+				<ul>
+					<li><a href="~/Home/About" title="About">About</a>
+					</li><li><a href="~/Home/Feedback" title="Site Feedback">Site Feedback</a>
+						 </li>
+				</ul>
+			</nav>
+			<p>
+				“My one piece of advice to anyone starting a brand would be to only do it if you are really passionate about it.” says Simona Kristianova.
+			</p>
+			<p>
+                “Don’t just start a brand because you think it’s cool or easy or you just want to make some quick cash. Running a brand is a labour of love – you have to put in work and put in hours. It’s not gonna make you a bundle of money, not yet anyway, so you have to really want to do it.”
+            </p>
+        </div>	
+    </footer>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/dateFormat")
+	@RenderSection("scripts", required: false)
+    @if(IsSectionDefined("NewsJS"))
+    {
+       @RenderSection("NewsJS");
+    }
+    <script type="text/javascript">
+        var currentArticle = document.getElementById('home');
+        if (window.location.href.indexOf("Home/") == -1) {
+            currentArticle.classList.add('active');
+        }
+        else {
+            currentArticle.classList.remove('active');
+        }
+    </script>
+</body>
+</html>
